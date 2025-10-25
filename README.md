@@ -10,7 +10,7 @@ Siga os passos para configurar o ambiente no VS Code.
 
 ### 1.1. Pré-requisitos
 
-* **Python 3.x**
+* **Python 3.12.15**
 * **Visual Studio Code (VS Code)**
 
 ### 1.2. Estrutura do Projeto
