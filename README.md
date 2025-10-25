@@ -17,12 +17,13 @@ Siga os passos para configurar o ambiente no VS Code.
 
 Certifique-se de que a sua pasta contém o arquivo de dados e todos os scripts de modelo:
 
-/Projeto_ML_AQI/ ├── AQI and Lat Long of Countries.csv
-   ├── knn_classificacao.py   
-   ├── naive_bayes_classificacao.py 
-   ├── arvore_decisao_classificacao.py 
-   ├── regressao_logistica_classificacao.py 
-   ├── redes_neurais_classificacao.py 
+/pattern_recognition/  
+   ├── AQI and Lat Long of Countries.csv  
+   ├── knn_classificacao.py    
+   ├── naive_bayes_classificacao.py  
+   ├── arvore_decisao_classificacao.py  
+   ├── regressao_logistica_classificacao.py  
+   ├── redes_neurais_classificacao.py  
    └── README.md
 
 ### 1.3. Instalação de Dependências
@@ -35,9 +36,13 @@ bash
 ▶️ 2. Execução dos ModelosCada script executa o pré-processamento, treinamento e avaliação de um modelo específico. Use o Terminal do VS Code para rodar cada um:
 Modelo de Classificação,Comando de Execução
 K-Nearest Neighbors (KNN),python knn_classificacao.py
+
 Naive Bayes,python naive_bayes_classificacao.py
-Árvore de Decisão,python arvore_decisao_classificacao.py
-Regressão Logística,python regressao_logistica_classificacao.py
+
+Árvore de Decisão,python arvore_decisao_classificacao.py 
+
+Regressão Logística,python regressao_logistica_classificacao.py 
+
 Redes Neurais (MLPClassifier),python redes_neurais_classificacao.py
 
 📊 3. Análise de Resultados
