@@ -18,15 +18,19 @@ Siga os passos para configurar o ambiente no VS Code.
 Certifique-se de que a sua pasta contém o arquivo de dados e todos os scripts de modelo:
 
 /Projeto_ML_AQI/ ├── AQI and Lat Long of Countries.csv
-
-├── knn_classificacao.py ├── naive_bayes_classificacao.py ├── arvore_decisao_classificacao.py ├── regressao_logistica_classificacao.py ├── redes_neurais_classificacao.py └── README.md
+   ├── knn_classificacao.py   
+   ├── naive_bayes_classificacao.py 
+   ├── arvore_decisao_classificacao.py 
+   ├── regressao_logistica_classificacao.py 
+   ├── redes_neurais_classificacao.py 
+   └── README.md
 
 ### 1.3. Instalação de Dependências
 
 Abra o Terminal no VS Code (**Terminal > New Terminal** ou `Ctrl + '`) e execute o seguinte comando para instalar todas as bibliotecas necessárias (`pandas` e `scikit-learn`):
 
 bash
-pip install pandas scikit-learn numpy
+**pip install pandas scikit-learn numpy**
 
 ▶️ 2. Execução dos ModelosCada script executa o pré-processamento, treinamento e avaliação de um modelo específico. Use o Terminal do VS Code para rodar cada um:
 Modelo de Classificação,Comando de Execução
