@@ -1,11 +1,10 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.tree import DecisionTreeClassifier # <--- NOVO MODELO
+from sklearn.linear_model import LogisticRegression # <--- NOVO MODELO
 from sklearn.metrics import accuracy_score, classification_report
 import warnings
 
-# Suprimir avisos, se necessário (embora não sejam comuns neste modelo)
 warnings.filterwarnings('ignore')
 
 # --- 1. CARREGAMENTO DOS DADOS ---
@@ -44,7 +43,6 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y_encoded, test_size=0.3, random_state=42, stratify=y_encoded
 )
 
-# Padronização/Escalonamento dos Recursos (Não estritamente necessário para Árvores, mas mantido)
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
@@ -53,24 +51,22 @@ print("\nPré-processamento concluído.")
 print(f"Dados de Treino: {X_train_scaled.shape}")
 print(f"Dados de Teste: {X_test_scaled.shape}")
 
-# --- 4. IMPLEMENTAÇÃO E TREINAMENTO DA ÁRVORE DE DECISÃO ---
+# --- 4. IMPLEMENTAÇÃO E TREINAMENTO DA REGRESSÃO LOGÍSTICA ---
 
-# Criando o modelo Árvore de Decisão
-dt_model = DecisionTreeClassifier(random_state=42)
+lr_model = LogisticRegression(multi_class='multinomial', solver='lbfgs', max_iter=1000, random_state=42)
 
 # Treinamento do modelo
-print("\nTreinando o modelo Árvore de Decisão...")
-# A Árvore de Decisão não exige escalonamento, mas pode usar X_train_scaled
-dt_model.fit(X_train_scaled, y_train)
+print("\nTreinando o modelo Regressão Logística...")
+lr_model.fit(X_train_scaled, y_train)
 
 # --- 5. AVALIAÇÃO DO MODELO ---
 
 # Fazendo previsões no conjunto de teste
-y_pred = dt_model.predict(X_test_scaled)
+y_pred = lr_model.predict(X_test_scaled)
 
 # Calculando a acurácia
 accuracy = accuracy_score(y_test, y_pred)
-print("\n--- Resultados do Decision Tree Classifier ---")
+print("\n--- Resultados do Logistic Regression Classifier ---")
 print(f"Acurácia no Conjunto de Teste: {accuracy:.4f}")
 
 # Relatório de Classificação (Precision, Recall, F1-Score)
@@ -78,5 +74,4 @@ report = classification_report(y_test, y_pred, target_names=target_names)
 print("\nRelatório de Classificação Detalhado:")
 print(report)
 
-# Remove o filtro de avisos
 warnings.filterwarnings('default')

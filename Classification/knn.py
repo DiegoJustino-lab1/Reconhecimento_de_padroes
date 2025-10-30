@@ -5,7 +5,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 # --- 1. CARREGAMENTO DOS DADOS ---
-# Certifique-se de que o arquivo "AQI and Lat Long of Countries.csv" está no mesmo diretório
 file_name = "AQI and Lat Long of Countries.csv"
 try:
     df = pd.read_csv(file_name)
@@ -16,7 +15,6 @@ except FileNotFoundError:
 
 # --- 2. DEFINIÇÃO DE RECURSOS (X) E ALVO (Y) ---
 
-# Colunas numéricas selecionadas como recursos (features)
 features = [
     'AQI Value', 
     'CO AQI Value', 
@@ -43,7 +41,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y_encoded, test_size=0.3, random_state=42, stratify=y_encoded
 )
 
-# Padronização/Escalonamento dos Recursos (Importante para KNN!)
+# Padronização/Escalonamento dos Recursos
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
@@ -63,7 +61,6 @@ knn_model.fit(X_train_scaled, y_train)
 
 # --- 5. AVALIAÇÃO DO MODELO ---
 
-# Fazendo previsões no conjunto de teste
 y_pred = knn_model.predict(X_test_scaled)
 
 # Calculando a acurácia
@@ -71,8 +68,6 @@ accuracy = accuracy_score(y_test, y_pred)
 print("\n--- Resultados do K-Nearest Neighbors Classifier ---")
 print(f"Acurácia no Conjunto de Teste: {accuracy:.4f}")
 
-# Relatório de Classificação (Precision, Recall, F1-Score)
-# Usamos 'target_names' para exibir os nomes reais das categorias no relatório
 report = classification_report(y_test, y_pred, target_names=target_names)
 print("\nRelatório de Classificação Detalhado:")
 print(report)
